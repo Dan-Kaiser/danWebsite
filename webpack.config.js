@@ -1,4 +1,5 @@
 module.exports = {
+  entry: './src/index.js',
   module: {
     rules: [
       {
@@ -9,5 +10,9 @@ module.exports = {
         }
       }
     ]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: __dirname + '/dist'
   }
 };
