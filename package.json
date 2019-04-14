@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev-build": "webpack -d -w"
+    "dev-build": "webpack -d -w",
+    "start": "cd server && nodemon -w index.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,13 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "nodemon": "^1.18.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
