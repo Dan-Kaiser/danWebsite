@@ -79,6 +79,13 @@ class TicTacToe extends React.Component {
       return 'O';
     }
     //check for tie game
+    const tieGame = this.state.boardState.filter(item => {
+      if (item) {
+        return item;
+      }
+    }).length === 9;
+    if (tieGame) return 'tie';
+    //keep playing
     return null;
   }
 
