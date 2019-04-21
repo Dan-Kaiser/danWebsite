@@ -68,7 +68,17 @@ class TicTacToe extends React.Component {
         return 'O';
       }
     }
+
     //check diagonal win
+    if (boardState[0] + boardState[4] + boardState[8] === "XXX"
+      || boardState[2] + boardState[4] + boardState[6] === "XXX") {
+      return 'X';
+    }
+    if (boardState[0] + boardState[4] + boardState[8] === "OOO"
+      || boardState[2] + boardState[4] + boardState[6] === "OOO") {
+      return 'O';
+    }
+    //check for tie game
     return null;
   }
 
