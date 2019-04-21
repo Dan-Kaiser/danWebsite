@@ -82,26 +82,54 @@ class TicTacToe extends React.Component {
       //check horizontal win
       let index = i * 3;
       if (boardState[index] + boardState[index + 1] + boardState[index + 2] === "XXX") {
+        document.getElementById(index).className += ' winner';
+        document.getElementById(index + 1).className += ' winner';
+        document.getElementById(index + 2).className += ' winner';
         return 'X';
       }
       if (boardState[index] + boardState[index + 1] + boardState[index + 2] === "OOO") {
+        document.getElementById(index).className += ' winner';
+        document.getElementById(index + 1).className += ' winner';
+        document.getElementById(index + 2).className += ' winner';
         return 'O';
       }
       //check vertical win
       if (boardState[i] + boardState[i + 3] + boardState[i + 6] === "XXX") {
+        document.getElementById(i).className += ' winner';
+        document.getElementById(i + 3).className += ' winner';
+        document.getElementById(i + 6).className += ' winner';
         return 'X';
       }
       if (boardState[i] + boardState[i + 3] + boardState[i + 6] === "OOO") {
+        document.getElementById(i).className += ' winner';
+        document.getElementById(i + 3).className += ' winner';
+        document.getElementById(i + 6).className += ' winner';
         return 'O';
       }
     }
     //check diagonal win
-    if (boardState[0] + boardState[4] + boardState[8] === "XXX"
-      || boardState[2] + boardState[4] + boardState[6] === "XXX") {
+    if (boardState[0] + boardState[4] + boardState[8] === "XXX") {
+      document.getElementById(0).className += ' winner';
+      document.getElementById(4).className += ' winner';
+      document.getElementById(8).className += ' winner';
       return 'X';
     }
-    if (boardState[0] + boardState[4] + boardState[8] === "OOO"
-      || boardState[2] + boardState[4] + boardState[6] === "OOO") {
+    if (boardState[2] + boardState[4] + boardState[6] === "XXX") {
+      document.getElementById(2).className += ' winner';
+      document.getElementById(4).className += ' winner';
+      document.getElementById(6).className += ' winner';
+      return 'X';
+    }
+    if (boardState[0] + boardState[4] + boardState[8] === "OOO") {
+      document.getElementById(0).className += ' winner';
+      document.getElementById(4).className += ' winner';
+      document.getElementById(8).className += ' winner';
+      return 'O';
+    }
+    if (boardState[2] + boardState[4] + boardState[6] === "OOO") {
+      document.getElementById(2).className += ' winner';
+      document.getElementById(4).className += ' winner';
+      document.getElementById(6).className += ' winner';
       return 'O';
     }
     //check for tie game

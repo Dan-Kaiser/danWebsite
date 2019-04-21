@@ -40,3 +40,7 @@
 #ticTacToe .hover {
   color: rgba(0, 0, 0, 0.466)
 }
+
+#ticTacToe .winner {
+  background-color: rgba(18, 223, 63, 0.966)
+}
