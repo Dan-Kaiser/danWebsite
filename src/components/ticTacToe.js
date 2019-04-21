@@ -4,6 +4,8 @@ class TicTacToe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      gameOver: false,
+      winner: null,
       currentTurn: 'X',
       boardState: [
         '', '', '',
@@ -14,6 +16,7 @@ class TicTacToe extends React.Component {
     this.setState = this.setState.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
     this.changeTurn = this.changeTurn.bind(this);
+    this.winCheck = this.winCheck.bind(this);
   }
 
   clickHandler(event) {
@@ -22,12 +25,18 @@ class TicTacToe extends React.Component {
   }
 
   updateTile(val, index) {
-    console.log(val, index);
-    if (!val) {
+    // console.log(val, index);
+    if (!val && this.state.gameOver === false) {
       let { boardState, currentTurn } = this.state;
       boardState[index] = currentTurn;
       this.setState({ boardState });
       this.changeTurn();
+      if (this.winCheck()) {
+        this.setState({
+          winner: this.winCheck(),
+          gameOver: true
+        });
+      }
     }
   }
 
@@ -39,11 +48,38 @@ class TicTacToe extends React.Component {
     }
   }
 
+  winCheck() {
+
+    const { boardState } = this.state;
+    for (let i = 0; i < 3; i++) {
+      //check horizontal win
+      let index = i * 3;
+      if (boardState[index] + boardState[index + 1] + boardState[index + 2] === "XXX") {
+        return 'X';
+      }
+      if (boardState[index] + boardState[index + 1] + boardState[index + 2] === "OOO") {
+        return 'O';
+      }
+      //check vertical win
+      if (boardState[i] + boardState[i + 3] + boardState[i + 6] === "XXX") {
+        return 'X';
+      }
+      if (boardState[i] + boardState[i + 3] + boardState[i + 6] === "OOO") {
+        return 'O';
+      }
+    }
+    //check diagonal win
+    return null;
+  }
+
   render() {
     return (
       <div>
         <div>
-          currentTurn : {this.state.currentTurn}
+          current Turn : {this.state.currentTurn}
+          <div>
+            winner: {this.state.winner}
+          </div>
         </div>
 
         <div id="tTCBoard">
@@ -59,15 +95,6 @@ class TicTacToe extends React.Component {
                 </div>
               )
             })}
-            {/* <div className='tile'>0</div>
-          <div className='tile'>0</div>
-          <div className='tile'>0</div>
-          <div className='tile'>0</div>
-          <div className='tile'>0</div>
-          <div className='tile'>0</div>
-          <div className='tile'>0</div>
-          <div className='tile'>0</div>
-          <div className='tile'>0</div> */}
           </div>
         </div>
       </div>
