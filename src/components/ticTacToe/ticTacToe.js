@@ -17,6 +17,18 @@ class TicTacToe extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
     this.changeTurn = this.changeTurn.bind(this);
     this.winCheck = this.winCheck.bind(this);
+    this.preview = this.preview.bind(this);
+  }
+
+  preview(event) {
+    console.log(event.target.textContent);
+    if (!event.target.textContent) {
+      event.target.className += ' hover'
+      event.target.textContent = this.state.currentTurn;
+    } else if (event.target.className.includes('hover')) {
+      event.target.className = 'tile';
+      event.target.textContent = '';
+    }
   }
 
   clickHandler(event) {
@@ -116,6 +128,8 @@ class TicTacToe extends React.Component {
                   className='tile'
                   id={index}
                   key={index}
+                  onMouseEnter={this.preview}
+                  onMouseLeave={this.preview}
                   onClick={this.clickHandler}>
                   {value}
                 </div>
