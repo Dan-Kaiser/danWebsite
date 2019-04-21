@@ -18,20 +18,36 @@ class TicTacToe extends React.Component {
     this.changeTurn = this.changeTurn.bind(this);
     this.winCheck = this.winCheck.bind(this);
     this.preview = this.preview.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   preview(event) {
-    if (!event.target.textContent) {
-      event.target.className += ' hover'
-      event.target.textContent = this.state.currentTurn;
-    } else if (event.target.className.includes('hover')) {
-      event.target.className = 'tile';
-      event.target.textContent = '';
+    if (this.state.gameOver === false) {
+      if (!event.target.textContent) {
+        event.target.className += ' hover'
+        event.target.textContent = this.state.currentTurn;
+      } else if (event.target.className.includes('hover')) {
+        event.target.className = 'tile';
+        event.target.textContent = '';
+      }
     }
   }
 
   clickHandler(event) {
     this.updateTile(event);
+  }
+
+  reset() {
+    this.setState({
+      gameOver: false,
+      winner: null,
+      currentTurn: 'X',
+      boardState: [
+        '', '', '',
+        '', '', '',
+        '', '', ''
+      ]
+    })
   }
 
   updateTile(event) {
@@ -115,7 +131,7 @@ class TicTacToe extends React.Component {
     return (
       <div>
         <div>
-          current Turn : {this.state.currentTurn}
+          <button onClick={this.reset}>Restart Game</button>
           {this.win()}
         </div>
 
