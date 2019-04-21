@@ -68,7 +68,6 @@ class TicTacToe extends React.Component {
         return 'O';
       }
     }
-
     //check diagonal win
     if (boardState[0] + boardState[4] + boardState[8] === "XXX"
       || boardState[2] + boardState[4] + boardState[6] === "XXX") {
@@ -89,14 +88,24 @@ class TicTacToe extends React.Component {
     return null;
   }
 
+  win() {
+    if (this.state.winner) {
+      return (
+        <div>
+          winner: {this.state.winner}
+        </div>
+      )
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div>
         <div>
           current Turn : {this.state.currentTurn}
-          <div>
-            winner: {this.state.winner}
-          </div>
+          {this.win()}
         </div>
 
         <div id="tTCBoard">
