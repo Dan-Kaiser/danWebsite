@@ -21,7 +21,6 @@ class TicTacToe extends React.Component {
   }
 
   preview(event) {
-    console.log(event.target.textContent);
     if (!event.target.textContent) {
       event.target.className += ' hover'
       event.target.textContent = this.state.currentTurn;
@@ -32,15 +31,15 @@ class TicTacToe extends React.Component {
   }
 
   clickHandler(event) {
-    const { id, textContent } = event.target;
-    this.updateTile(textContent, id);
+    this.updateTile(event);
   }
 
-  updateTile(val, index) {
-    // console.log(val, index);
-    if (!val && this.state.gameOver === false) {
+  updateTile(event) {
+    const { id, textContent, className } = event.target;
+    if (className.includes('hover') && this.state.gameOver === false) {
+      event.target.className = 'tile';
       let { boardState, currentTurn } = this.state;
-      boardState[index] = currentTurn;
+      boardState[id] = currentTurn;
       this.setState({ boardState });
       this.changeTurn();
       if (this.winCheck()) {
