@@ -38,6 +38,10 @@ class TicTacToe extends React.Component {
   }
 
   reset() {
+    for (let i = 0; i < 9; i++) {
+      let currTile = document.getElementById(i);
+      currTile.className = 'tile';
+    }
     this.setState({
       gameOver: false,
       winner: null,
