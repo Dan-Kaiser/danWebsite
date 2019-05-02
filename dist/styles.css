@@ -1,13 +1,43 @@
-/* * {
-  box-sizing: border-box
-} */
-#header {
+/*
+------ Check here for any tips ---------
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Realizing_common_layouts_using_CSS_Grid_Layout
+------ Check here for any tips ---------
+*/
+body {
+  margin: 0;
+  background: rgb(155, 236, 155);
+}
+
+/*
+Header
+*/
+
+header {
   display: grid;
   grid-template-columns: 70% 30%;
+  background: rgb(155, 236, 155);
+  grid-area: header;
+  padding: 0px 12px 0px 12px;
 }
-#header.contact {
-  float:right
+
+header .contact {
+  text-align:right;
 }
+
+/*
+Main content
+*/
+
+#Main {
+  background: white;
+  height: 1000px;
+  width: 100%;
+}
+
+/*
+Tic Tac Toe
+*/
+
 #tTCBoard {
   position: relative;
     width: 50vw;
